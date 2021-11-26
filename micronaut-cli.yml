@@ -1,0 +1,6 @@
+applicationType: messaging
+defaultPackage: kafka.stream.order.processing
+testFramework: junit
+sourceLanguage: java
+buildTool: gradle
+features: [app-name, docker, file-watch, file-watch-osx, gradle, java, java-application, junit, kafka, logback, readme, shade, yaml]

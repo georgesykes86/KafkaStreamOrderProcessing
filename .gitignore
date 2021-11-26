@@ -15,11 +15,6 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
-
-### Gradle ###
-.gradle
-/build/
-
 # Ignore Gradle GUI config
 gradle-app.setting
 
@@ -28,3 +23,19 @@ gradle-app.setting
 
 # Cache of project
 .gradletasknamecache
+
+Thumbs.db
+.DS_Store
+.gradle
+build/
+/build/
+target/
+out/
+.idea
+*.iml
+*.ipr
+*.iws
+.project
+.settings
+.classpath
+.factorypath

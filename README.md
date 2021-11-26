@@ -18,3 +18,9 @@ Using Kafka and Kafka Streams API we want to create producers for all these obje
 Things that you might want to consider to achieve the objectives are
 - Stream Processing - KStream KTable
 - Windows, collapsing
+
+## Getting started
+
+To start the kafka cluster ``docker-compose up -d``
+
+Stop all docker containers ``docker-compose down``
