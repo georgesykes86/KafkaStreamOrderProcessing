@@ -1,0 +1,33 @@
+{
+  "name": "Order",
+  "namespace": "kafka.stream.order.processing.domain.model",
+  "type": "record",
+  "fields": [
+    {
+      "name": "items",
+      "type": {
+        "type": "array",
+        "items": {
+          "name": "OrderItem",
+          "type": "record",
+          "fields": [
+            {
+              "name": "productId",
+              "type": "string",
+              "logicalType": "uuid"
+            },
+            {
+              "name": "quantity",
+              "type": "int"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "logicalType": "uuid"
+    }
+  ]
+}

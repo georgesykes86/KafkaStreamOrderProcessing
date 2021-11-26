@@ -1,4 +1,7 @@
 micronaut:
   application:
     name: kafkaStreamOrderProcessing
-kafka.bootstrap.servers: localhost:9092
+kafka.bootstrap.servers:
+  - broker-1:9092
+  - broker-2:9093
+  - broker-3:9094

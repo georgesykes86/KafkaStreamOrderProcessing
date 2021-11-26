@@ -1,0 +1,16 @@
+{
+  "name": "ProductPriceEvent",
+  "namespace": "kafka.stream.order.processing.domain.model",
+  "type": "record",
+  "fields": [
+    {
+      "name": "productId",
+      "type": "string",
+      "logicalType": "uuid"
+    },
+    {
+      "name": "price",
+      "type": "long"
+    }
+  ]
+}
