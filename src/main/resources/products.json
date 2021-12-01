@@ -1,0 +1,44 @@
+{
+  "products": [
+    {
+      "id": "84573008",
+      "name": "Cathedral City Cheddar 500g"
+    },
+    {
+      "id": "70724777",
+      "name": "Digestive biscuits"
+    },
+    {
+      "id": "20143286",
+      "name": "Dairy Milk 500g"
+    },
+    {
+      "id": "91840292",
+      "name": "Seedless grapes"
+    },
+    {
+      "id": "37233791",
+      "name": "Kelloggs Bran Flakes"
+    },
+    {
+      "id": "54621853",
+      "name": "Iceberg lettuce"
+    },
+    {
+      "id": "87579065",
+      "name": "Orange Juice"
+    },
+    {
+      "id": "69795632",
+      "name": "Semi-skimmed milk 2l"
+    },
+    {
+      "id": "88583886",
+      "name": "Sea salt"
+    },
+    {
+      "id": "22623819",
+      "name": "Chicken thighs 1kg"
+    }
+  ]
+}

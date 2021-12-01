@@ -1,15 +1,15 @@
 {
-  "name": "ProductPriceEvent",
+  "name": "Product",
   "namespace": "kafka.stream.order.processing.domain.model",
   "type": "record",
   "fields": [
     {
-      "name": "productId",
+      "name": "id",
       "type": "string"
     },
     {
-      "name": "price",
-      "type": "long"
+      "name": "name",
+      "type": "string"
     }
   ]
 }

@@ -1,7 +1,18 @@
 micronaut:
   application:
     name: kafkaStreamOrderProcessing
-kafka.bootstrap.servers:
-  - broker-1:9092
-  - broker-2:9093
-  - broker-3:9094
+kafka:
+  bootstrap:
+    servers:
+    - broker-1:9092
+    - broker-2:9093
+    - broker-3:9094
+  schema:
+    registry:
+      url: http://localhost:8081
+  producers:
+    order-client:
+      value:
+        serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+      key:
+        serializer: org.apache.kafka.common.serialization.UUIDSerializer
