@@ -147,7 +147,9 @@ services:
       - schema-registry
     command: "bash -c 'echo Waiting for Kafka to be ready... && \
                          cub kafka-ready -b broker-1:29092,broker-2:9093,broker-3:9094 3 20 && \
-                         kafka-topics --create --if-not-exists --zookeeper zookeeper:2181 --partitions 1 --replication-factor 3 --topic orders'"
+                         kafka-topics --create --if-not-exists --zookeeper zookeeper:2181 --partitions 1 --replication-factor 3 --topic orders && \
+                         kafka-topics --create --if-not-exists --zookeeper zookeeper:2181 --partitions 1 --replication-factor 3 --topic products && \
+                         kafka-topics --create --if-not-exists --zookeeper zookeeper:2181 --partitions 1 --replication-factor 3 --topic prices'"
     environment:
       # The following settings are listed here only to satisfy the image's requirements.
       # We override the image's `command` anyways, hence this container will not start a broker.

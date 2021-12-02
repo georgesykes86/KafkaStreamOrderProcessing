@@ -1,18 +1,16 @@
 package kafka.stream.order.processing;
 
-import static java.lang.Thread.sleep;
-
 import io.micronaut.context.event.StartupEvent;
 import io.micronaut.runtime.event.annotation.EventListener;
-import io.micronaut.scheduling.annotation.Async;
-import kafka.stream.order.processing.domain.model.Order;
-import kafka.stream.order.processing.domain.model.OrderItem;
-import kafka.stream.order.processing.domain.producer.OrderClient;
+import kafka.stream.order.processing.domain.provider.ProductsProvider;
+import kafka.stream.order.processing.domain.model.Product;
+import kafka.stream.order.processing.domain.model.ProductPriceEvent;
+import kafka.stream.order.processing.domain.producer.PriceClient;
+import kafka.stream.order.processing.domain.producer.ProductClient;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
@@ -20,31 +18,34 @@ import javax.inject.Singleton;
 @Slf4j
 public class OrderProducerStarter {
 
-    private OrderClient orderClient;
+    private final ProductClient productClient;
+    private final PriceClient priceClient;
+    private final ProductsProvider provider;
 
     @Inject
-    public OrderProducerStarter(OrderClient orderClient) {
-        this.orderClient = orderClient;
+    public OrderProducerStarter(ProductClient productClient, PriceClient priceClient, ProductsProvider provider) {
+        this.productClient = productClient;
+        this.priceClient = priceClient;
+        this.provider = provider;
     }
 
     @EventListener
     public void startProducingOrders(final StartupEvent event) throws InterruptedException {
         log.info("Starting the producer");
 
-        while(true) {
-            sleep(1000);
-            UUID orderId = UUID.randomUUID();
-            orderClient.sendOrder(orderId, createOrder(orderId));
-        }
+        List<Product> products = provider.getProductData().getProducts();
+
+        products.forEach(product -> {
+            productClient.sendProduct(UUID.randomUUID(), product);
+            ProductPriceEvent initialPrice = new ProductPriceEvent(product.getId(), randomPriceInPence());
+            priceClient.sendPrice(UUID.randomUUID(), initialPrice);
+        });
     }
 
-    private Order createOrder(UUID orderId) {
-        return Order.newBuilder()
-                .setId(orderId.toString())
-                .setItems(IntStream.range(0, 2)
-                        .mapToObj(num -> new OrderItem(UUID.randomUUID().toString(), 2))
-                        .collect(Collectors.toList()))
-                .build();
+    public long randomPriceInPence() {
+        long min = 1L;
+        long max = 500L;
+        return min + (long) (Math.random() * (max - min));
     }
 
 }
