@@ -1,10 +1,15 @@
 package kafka.stream.order.processing.domain.model;
 
-import lombok.Value;
+import io.micronaut.core.annotation.Introspected;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 
 import java.util.List;
 
-@Value
+@Data
+@NoArgsConstructor
+@Introspected
 public class OrderRequest {
 
     List<OrderItemRequest> items;

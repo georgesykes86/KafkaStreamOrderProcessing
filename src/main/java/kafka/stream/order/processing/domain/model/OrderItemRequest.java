@@ -1,8 +1,12 @@
 package kafka.stream.order.processing.domain.model;
 
-import lombok.Value;
+import io.micronaut.core.annotation.Introspected;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Value
+@Data
+@NoArgsConstructor
+@Introspected
 public class OrderItemRequest {
 
     String productId;

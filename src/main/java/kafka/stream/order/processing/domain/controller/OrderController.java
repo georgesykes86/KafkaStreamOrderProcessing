@@ -2,6 +2,7 @@ package kafka.stream.order.processing.domain.controller;
 
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.MediaType;
+import io.micronaut.http.annotation.Body;
 import io.micronaut.http.annotation.Consumes;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Post;
@@ -10,12 +11,15 @@ import kafka.stream.order.processing.domain.model.OrderItem;
 import kafka.stream.order.processing.domain.model.OrderItemRequest;
 import kafka.stream.order.processing.domain.model.OrderRequest;
 import kafka.stream.order.processing.domain.producer.OrderClient;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.UUID;
 import java.util.stream.Collectors;
 import javax.inject.Inject;
+import javax.validation.Valid;
 
 @Controller("/orders")
+@Slf4j
 public class OrderController {
 
     private OrderClient client;
@@ -27,7 +31,8 @@ public class OrderController {
 
     @Consumes(MediaType.APPLICATION_JSON)
     @Post
-    public HttpResponse registerNewOrder(OrderRequest request) {
+    public HttpResponse registerNewOrder(@Valid @Body OrderRequest request) {
+        log.info("Order request received");
         UUID orderId = UUID.randomUUID();
         client.sendOrder(orderId, mapToOrder(orderId, request));
         return HttpResponse.ok();

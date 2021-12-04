@@ -2,6 +2,7 @@ package kafka.stream.order.processing.domain.controller;
 
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.MediaType;
+import io.micronaut.http.annotation.Body;
 import io.micronaut.http.annotation.Consumes;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Post;
@@ -11,6 +12,7 @@ import kafka.stream.order.processing.domain.producer.PriceClient;
 
 import java.util.UUID;
 import javax.inject.Inject;
+import javax.validation.Valid;
 
 @Controller("/prices")
 public class PriceController {
@@ -24,7 +26,7 @@ public class PriceController {
 
     @Consumes(MediaType.APPLICATION_JSON)
     @Post
-    public HttpResponse setNewPrice(ProductPriceRequest request) {
+    public HttpResponse setNewPrice(@Valid @Body ProductPriceRequest request) {
         client.sendPrice(UUID.randomUUID(), mapToPriceEvent(request));
         return HttpResponse.ok();
     }

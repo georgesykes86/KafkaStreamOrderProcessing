@@ -19,10 +19,10 @@ kafka:
     product-client:
       value:
         serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
-        key:
-          serializer: org.apache.kafka.common.serialization.UUIDSerializer
+      key:
+        serializer: org.apache.kafka.common.serialization.UUIDSerializer
     price-client:
       value:
         serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
-        key:
-          serializer: org.apache.kafka.common.serialization.UUIDSerializer
+      key:
+        serializer: org.apache.kafka.common.serialization.UUIDSerializer
