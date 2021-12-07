@@ -5,12 +5,10 @@ import io.micronaut.configuration.kafka.annotation.KafkaKey;
 import io.micronaut.configuration.kafka.annotation.Topic;
 import kafka.stream.order.processing.domain.model.Product;
 
-import java.util.UUID;
-
 @KafkaClient(id = "product-client")
 public interface ProductClient {
 
     @Topic("products")
-    void sendProduct(@KafkaKey UUID key, Product product);
+    void sendProduct(@KafkaKey String key, Product product);
 
 }

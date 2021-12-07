@@ -34,7 +34,7 @@ public class OrderController {
     public HttpResponse registerNewOrder(@Valid @Body OrderRequest request) {
         log.info("Order request received");
         UUID orderId = UUID.randomUUID();
-        client.sendOrder(orderId, mapToOrder(orderId, request));
+        client.sendOrder(orderId.toString(), mapToOrder(orderId, request));
         return HttpResponse.ok();
     }
 

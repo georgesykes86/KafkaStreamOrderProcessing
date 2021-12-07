@@ -10,7 +10,6 @@ import kafka.stream.order.processing.domain.producer.ProductClient;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
-import java.util.UUID;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
@@ -30,15 +29,15 @@ public class OrderProducerStarter {
     }
 
     @EventListener
-    public void startProducingOrders(final StartupEvent event) throws InterruptedException {
+    public void startProducingOrders(final StartupEvent event) {
         log.info("Starting the producer");
 
         List<Product> products = provider.getProductData().getProducts();
 
         products.forEach(product -> {
-            productClient.sendProduct(UUID.randomUUID(), product);
+            productClient.sendProduct(product.getId(), product);
             ProductPriceEvent initialPrice = new ProductPriceEvent(product.getId(), randomPriceInPence());
-            priceClient.sendPrice(UUID.randomUUID(), initialPrice);
+            priceClient.sendPrice(product.getId(), initialPrice);
         });
     }
 

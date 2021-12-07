@@ -11,6 +11,6 @@ import java.util.UUID;
 public interface OrderClient {
 
     @Topic("orders")
-    void sendOrder(@KafkaKey UUID key, Order order);
+    void sendOrder(@KafkaKey String key, Order order);
 
 }

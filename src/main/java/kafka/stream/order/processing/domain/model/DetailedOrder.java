@@ -3,14 +3,14 @@ package kafka.stream.order.processing.domain.model;
 import lombok.Builder;
 import lombok.Value;
 
+import java.util.List;
+
 @Value
 @Builder(toBuilder = true)
-public class PricedOrderItem {
+public class DetailedOrder {
 
-    String orderId;
     String id;
-    String name;
-    long price;
-    int quantity;
+    List<PricedOrderItem> items;
+    long totalCost;
 
 }
