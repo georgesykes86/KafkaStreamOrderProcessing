@@ -1,0 +1,50 @@
+{
+  "name": "DetailedOrder",
+  "namespace": "kafka.stream.order.processing.domain.model",
+  "type": "record",
+  "fields": [
+    {
+      "name": "items",
+      "type": {
+        "type": "array",
+        "items": {
+          "name": "PricedOrderItem",
+          "type": "record",
+          "fields": [
+            {
+              "name": "orderId",
+              "type": "string"
+            },
+            {
+              "name": "id",
+              "type": "string"
+            },
+            {
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "name": "price",
+              "type": "long"
+            },
+            {
+              "name": "quantity",
+              "type": "int"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "id",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "name": "totalCost",
+      "type": "long"
+    }
+  ]
+}

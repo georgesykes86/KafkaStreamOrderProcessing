@@ -15,14 +15,14 @@ kafka:
       value:
         serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
       key:
-        serializer: org.apache.kafka.common.serialization.UUIDSerializer
+        serializer: org.apache.kafka.common.serialization.StringSerializer
     product-client:
       value:
         serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
       key:
-        serializer: org.apache.kafka.common.serialization.UUIDSerializer
+        serializer: org.apache.kafka.common.serialization.StringSerializer
     price-client:
       value:
         serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
       key:
-        serializer: org.apache.kafka.common.serialization.UUIDSerializer
+        serializer: org.apache.kafka.common.serialization.StringSerializer

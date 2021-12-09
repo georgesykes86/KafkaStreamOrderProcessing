@@ -1,0 +1,19 @@
+{
+  "name": "IndividualOrderItem",
+  "namespace": "kafka.stream.order.processing.domain.model",
+  "type": "record",
+  "fields": [
+    {
+      "name": "orderId",
+      "type": "string"
+    },
+    {
+      "name": "productId",
+      "type": "string"
+    },
+    {
+      "name": "quantity",
+      "type": "int"
+    }
+  ]
+}

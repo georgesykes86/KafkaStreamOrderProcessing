@@ -27,7 +27,7 @@ public class PriceController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Post
     public HttpResponse setNewPrice(@Valid @Body ProductPriceRequest request) {
-        client.sendPrice(UUID.randomUUID(), mapToPriceEvent(request));
+        client.sendPrice(request.getProductId(), mapToPriceEvent(request));
         return HttpResponse.ok();
     }
 

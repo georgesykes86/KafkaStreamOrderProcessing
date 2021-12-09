@@ -1,9 +1,11 @@
 package kafka.stream.order.processing.domain.model;
 
 import io.micronaut.core.annotation.Introspected;
-import lombok.Value;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Value
+@Data
+@NoArgsConstructor
 @Introspected
 public class ProductPriceRequest {
 
